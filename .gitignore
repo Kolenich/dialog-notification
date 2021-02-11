@@ -118,5 +118,5 @@ dist
 .pnp.*
 
 build
-.idea/
+.idea
 

@@ -5,8 +5,7 @@
   ],
   "plugins": [
     "@babel/plugin-proposal-optional-chaining",
-    "@babel/proposal-class-properties",
     "@babel/proposal-object-rest-spread",
-    "@babel/plugin-transform-runtime"
+    "@babel/plugin-transform-react-jsx"
   ]
 }

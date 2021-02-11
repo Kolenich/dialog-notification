@@ -9,7 +9,7 @@ export interface DialogContextValue {
    *
    * @param {DialogOptions} options - additional options for Dialog wondow view
    */
-  openDialog: (message: ReactNode, options: DialogOptions) => void;
+  openDialog: (message: ReactNode, options?: DialogOptions) => void;
 }
 
 export interface DialogOptions {

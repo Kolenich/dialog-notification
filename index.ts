@@ -1,5 +1,3 @@
-import DialogProvider from 'DialogProvider';
-import useDialog from 'useDialog';
-import withDialog from 'withDialog';
-
-export { DialogProvider, useDialog, withDialog };
+export { default as DialogProvider } from 'DialogProvider';
+export { default as useDialog } from 'useDialog';
+export { default as withDialog } from 'withDialog';

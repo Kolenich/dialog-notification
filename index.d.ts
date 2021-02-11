@@ -1,5 +1,5 @@
 import { SvgIconComponent } from '@material-ui/icons';
-import { ComponentType, FC, ReactNode } from 'react';
+import { ComponentType, ReactNode } from 'react';
 
 export interface DialogContextValue {
   /**
@@ -7,7 +7,7 @@ export interface DialogContextValue {
    *
    * @param {ReactNode} message - main content of the Dialog window
    *
-   * @param {DialogOptions} options - additional options for Dialog wondow view
+   * @param {DialogOptions} options - additional options for Dialog window view
    */
   openDialog: (message: ReactNode, options?: DialogOptions) => void;
 }
@@ -65,5 +65,3 @@ export function DialogProvider(props: DialogProviderProps): JSX.Element;
 export function useDialog(): DialogContextValue;
 
 export function withDialog<T>(component: ComponentType<T>): ComponentType<T & DialogContextValue>;
-
-

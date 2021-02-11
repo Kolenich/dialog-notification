@@ -28,7 +28,6 @@ import { DialogProvider } from 'dialog-notification';
 ```jsx
 import { withDialog } from 'dialog-notification';
 import { Button } from '@material-ui/core';
-import React, { Component } from 'react';
 
 class ClassComponent extends Component {
   render() {
@@ -48,7 +47,6 @@ export default withDialog(ClassComponent);
 ```jsx
 import { useDialog } from 'dialog-notification';
 import { Button } from '@material-ui/core';
-import React from 'react';
 
 export default function FuncComponent() {
   const { openDialog } = useDialog();

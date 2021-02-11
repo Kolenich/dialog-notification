@@ -1,5 +1,5 @@
-import DialogWindow from 'components/DialogWindow';
 import React, { createContext, FC, ReactNode, useCallback, useMemo, useState } from 'react';
+import DialogWindow from '../components/DialogWindow';
 import { DialogContextValue, DialogOptions, DialogProviderProps, DialogState } from './types';
 
 /** Main context */

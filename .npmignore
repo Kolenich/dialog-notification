@@ -1,5 +1,7 @@
-src
-tsconfig.json
 .git
 .eslintrc
 .idea
+.gitignore
+node_modules
+index.ts
+tsconfig.json

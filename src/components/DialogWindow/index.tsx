@@ -9,9 +9,9 @@ import {
 import { Cancel, Done } from '@material-ui/icons';
 import { makeStyles } from '@material-ui/styles';
 import clsx from 'clsx';
-import { DialogProviderProps, DialogWindowProps } from 'DialogProvider/types';
 import React, { FC, useCallback, useMemo } from 'react';
-import { getDialogTitle, getIconClass, VariantIcon } from 'utils';
+import { DialogProviderProps, DialogWindowProps } from '../../DialogProvider/types';
+import { getDialogTitle, getIconClass, VariantIcon } from '../../utils';
 import { iconStyles, mainStyles } from './styles';
 
 const useIconStyles = makeStyles(iconStyles);

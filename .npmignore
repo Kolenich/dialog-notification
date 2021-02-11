@@ -122,3 +122,5 @@ src
 tsconfig.json
 index.ts
 .idea
+!src
+!tsconfig.json

@@ -1,11 +1,26 @@
 {
-  "name": "@kolenich/dialog-notification",
+  "name": "dialog-notification",
   "version": "1.0.0",
-  "description": "",
+  "description": "Library for using MUI Dialog component for making notifications.",
   "main": "index.ts",
+  "types": "index.d.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Kolenich/dialog-notification.git"
+  },
+  "keywords": [
+    "typescript",
+    "dialog",
+    "modal",
+    "notification"
+  ],
+  "bugs": {
+    "url": "https://github.com/Kolenich/dialog-notification/issues"
+  },
+  "homepage": "https://github.com/Kolenich/dialog-notification",
   "author": "kolenich",
   "license": "ISC",
   "dependencies": {

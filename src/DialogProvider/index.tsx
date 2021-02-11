@@ -1,5 +1,5 @@
 import DialogWindow from 'components/DialogWindow';
-import React, { createContext, FC, ReactNode, useMemo, useState } from 'react';
+import React, { createContext, FC, ReactNode, useCallback, useMemo, useState } from 'react';
 import { DialogContextValue, DialogOptions, DialogProviderProps, DialogState } from './types';
 
 /** Main context */
@@ -29,13 +29,17 @@ const DialogProvider: FC<DialogProviderProps> = ({ children, ...providerOptions 
       options,
       open: true,
     }),
-    /** Function, that closes Dialog window */
-    closeDialog: () => setDialogState({ open: false, message: null }),
   }), []);
+
+  /**
+   * Function for closing Dialog window
+   * @type {() => void}
+   */
+  const closeDialog = useCallback(() => setDialogState({ open: false, message: null }), []);
 
   return (
     <DialogContext.Provider value={contextValue}>
-      <DialogWindow {...providerOptions} {...dialogState} />
+      <DialogWindow {...providerOptions} {...dialogState} onClose={closeDialog}/>
       {children}
     </DialogContext.Provider>
   );

@@ -1,16 +1,18 @@
-import { DialogProps } from '@material-ui/core';
 import { SvgIconComponent } from '@material-ui/icons';
 import { ReactNode } from 'react';
 
 export interface DialogContextValue {
   openDialog: (message: string, options: DialogOptions) => void;
-  closeDialog: () => void;
 }
 
 export interface DialogState {
   open: boolean;
   message: ReactNode;
   options?: DialogOptions;
+}
+
+export interface DialogWindowProps extends DialogState {
+  onClose: () => void;
 }
 
 export interface DialogOptions {

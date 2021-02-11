@@ -9,9 +9,8 @@ import {
 import { Cancel, Done } from '@material-ui/icons';
 import { makeStyles } from '@material-ui/styles';
 import clsx from 'clsx';
-import { DialogProviderProps, DialogState } from 'DialogProvider/types';
+import { DialogProviderProps, DialogWindowProps } from 'DialogProvider/types';
 import React, { FC, useCallback, useMemo } from 'react';
-import useDialog from 'useDialog';
 import { getDialogTitle, getIconClass, VariantIcon } from 'utils';
 import { iconStyles, mainStyles } from './styles';
 
@@ -23,31 +22,31 @@ const useMainStyles = makeStyles(mainStyles);
  * @param open {Boolean} - flag to open/close Dialog window
  * @param {React.ReactNode} message - main content of the Dialog window
  * @param {DialogOptions} options? - additional options to opening Dialog window
+ * @param {() => void} onClose - function, that closes Dialog window
  * @param {DialogProviderProps} providerOptions - options from initializing DialogProvider
- * @constructor
+ * @return {JSX.Element}
  */
-const DialogWindow: FC<DialogState & DialogProviderProps> = ({
-  open, message, options, ...providerOptions
+const DialogWindow: FC<DialogWindowProps & DialogProviderProps> = ({
+  open, message, options, onClose, ...providerOptions
 }) => {
   const classesIcon = useIconStyles();
   const classes = useMainStyles();
-  const { closeDialog } = useDialog();
 
   /** Function for invoking options.onClose callback after closing Dialog window */
   const closeDialogWindow = useCallback(() => {
-    closeDialog();
+    onClose();
     if (options?.onClose) {
       options.onClose();
     }
-  }, [options?.onClose, closeDialog]);
+  }, [options?.onClose, onClose]);
 
   /** Function for invoking options.onAccept callback after closing Dialog window */
   const acceptWarning = useCallback(() => {
-    closeDialog();
+    onClose();
     if (options?.onAccept) {
       options.onAccept();
     }
-  }, [options?.onAccept, closeDialog]);
+  }, [options?.onAccept, onClose]);
 
   /** Icon component rendered in Dialog window header */
   const Icon = useMemo(() => VariantIcon(options?.variant), [options?.variant]);

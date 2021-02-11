@@ -2,6 +2,9 @@
 .eslintrc
 .idea
 .gitignore
+.babelrc
 node_modules
 index.ts
 tsconfig.json
+src
+!build/src

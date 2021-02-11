@@ -2,7 +2,7 @@ import { SvgIconComponent } from '@material-ui/icons';
 import { ReactNode } from 'react';
 
 export interface DialogContextValue {
-  openDialog: (message: string, options: DialogOptions) => void;
+  openDialog: (message: string, options?: DialogOptions) => void;
 }
 
 export interface DialogState {

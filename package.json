@@ -1,6 +1,6 @@
 {
   "name": "dialog-notification",
-  "version": "1.0.21",
+  "version": "1.0.27",
   "description": "Library for using MUI Dialog component for making notifications.",
   "main": "build/index.js",
   "types": "build/index.d.ts",
@@ -27,16 +27,11 @@
   "dependencies": {
     "@material-ui/core": "^4.11.3",
     "@material-ui/icons": "^4.11.2",
-    "@material-ui/styles": "^4.11.3",
     "clsx": "^1.1.1",
     "react": "^17.0.1",
     "typescript": "^4.1.5"
   },
   "devDependencies": {
-    "@babel/cli": "^7.12.13",
-    "@babel/core": "^7.12.13",
-    "@babel/plugin-proposal-optional-chaining": "^7.12.13",
-    "@babel/plugin-transform-react-jsx": "^7.12.13",
     "@babel/preset-env": "^7.12.13",
     "@babel/preset-typescript": "^7.12.13",
     "@typescript-eslint/eslint-plugin": "^4.15.0",

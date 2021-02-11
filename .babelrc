@@ -1,11 +1,6 @@
 {
   "presets": [
-    "@babel/env",
+    "@babel/preset-env",
     "@babel/preset-typescript"
-  ],
-  "plugins": [
-    "@babel/plugin-proposal-optional-chaining",
-    "@babel/proposal-object-rest-spread",
-    "@babel/plugin-transform-react-jsx"
   ]
 }

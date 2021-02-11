@@ -1,6 +1,5 @@
-import { Theme } from '@material-ui/core';
 import { amber, blue, green, grey } from '@material-ui/core/colors';
-import { createStyles } from '@material-ui/styles';
+import { createStyles, Theme } from '@material-ui/core/styles';
 
 /**
  * Main styles for Dialog window

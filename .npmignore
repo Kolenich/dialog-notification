@@ -118,6 +118,7 @@ dist
 .pnp.*
 
 src
+node_modules
 !build/src
 tsconfig.json
 .babelrc

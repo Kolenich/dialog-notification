@@ -35,7 +35,10 @@ const DialogProvider: FC<DialogProviderProps> = ({ children, ...providerOptions 
    * Function for closing Dialog window
    * @type {() => void}
    */
-  const closeDialog = useCallback(() => setDialogState({ open: false, message: null }), []);
+  const closeDialog = useCallback(() => setDialogState((oldDialogState) => ({
+    ...oldDialogState,
+    open: false,
+  })), []);
 
   return (
     <DialogContext.Provider value={contextValue}>

@@ -35,17 +35,13 @@ const DialogWindow: FC<DialogWindowProps & DialogProviderProps> = ({
   /** Function for invoking options.onClose callback after closing Dialog window */
   const closeDialogWindow = useCallback(() => {
     onClose();
-    if (options?.onClose) {
-      options.onClose();
-    }
+    options?.onClose?.();
   }, [options?.onClose, onClose]);
 
   /** Function for invoking options.onAccept callback after closing Dialog window */
   const acceptWarning = useCallback(() => {
     onClose();
-    if (options?.onAccept) {
-      options.onAccept();
-    }
+    options?.onAccept?.();
   }, [options?.onAccept, onClose]);
 
   /** Icon component rendered in Dialog window header */
@@ -56,7 +52,6 @@ const DialogWindow: FC<DialogWindowProps & DialogProviderProps> = ({
       scroll="paper"
       open={open}
       fullWidth
-      maxWidth="lg"
       onClose={closeDialogWindow}
       disableBackdropClick={['loading', 'warning'].includes(options?.variant || 'info')}
       disableEscapeKeyDown={['loading', 'warning'].includes(options?.variant || 'info')}

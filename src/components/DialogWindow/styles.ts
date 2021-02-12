@@ -3,14 +3,12 @@ import { createStyles, Theme } from '@material-ui/core/styles';
 
 /**
  * Main styles for Dialog window
- * @param {Theme} theme - MUI theme object
  * @returns {StyleRules<{}, "success" | "warning" | "error" | "loading" | "info">}
  */
-export const mainStyles = (theme: Theme) => createStyles({
+export const mainStyles = () => createStyles({
   icon: {
     fontSize: 35,
     opacity: 0.9,
-    marginRight: theme.spacing(1),
   },
 });
 

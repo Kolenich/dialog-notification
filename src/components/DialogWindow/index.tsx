@@ -60,7 +60,7 @@ const DialogWindow: FC<DialogWindowProps & DialogProviderProps> = ({
       disableEscapeKeyDown={['loading', 'warning'].includes(options?.variant || 'info')}
     >
       <DialogTitle>
-        <Grid container alignItems="center">
+        <Grid container alignItems="center" spacing={2}>
           <Grid item xs="auto">
             <Icon className={clsx(classes.icon, classesIcon[getIconClass(options?.variant)])}/>
           </Grid>

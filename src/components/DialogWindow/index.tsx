@@ -55,6 +55,8 @@ const DialogWindow: FC<DialogWindowProps & DialogProviderProps> = ({
     <Dialog
       scroll="paper"
       open={open}
+      fullWidth
+      maxWidth="lg"
       onClose={closeDialogWindow}
       disableBackdropClick={['loading', 'warning'].includes(options?.variant || 'info')}
       disableEscapeKeyDown={['loading', 'warning'].includes(options?.variant || 'info')}

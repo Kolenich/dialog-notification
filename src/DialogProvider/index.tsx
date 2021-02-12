@@ -24,7 +24,7 @@ const DialogProvider: FC<DialogProviderProps> = ({ children, ...providerOptions 
      * @param {React.ReactNode} message - main content of the Dialog window
      * @param {DialogOptions} options - additional options to Dialog window
      */
-    openDialog: (message: ReactNode, options?: DialogOptions) => setDialogState({
+    openDialog: (message: ReactNode, options: DialogOptions = { variant: 'info' }) => setDialogState({
       message,
       options,
       open: true,

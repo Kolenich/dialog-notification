@@ -36,16 +36,16 @@ const DialogWindow: FC<DialogWindowProps & DialogProviderProps> = ({
   const closeDialogWindow = useCallback(() => {
     onClose();
     options?.onClose?.();
-  }, [options?.onClose, onClose]);
+  }, [options, onClose]);
 
   /** Function for invoking options.onAccept callback after closing Dialog window */
   const acceptWarning = useCallback(() => {
     onClose();
     options?.onAccept?.();
-  }, [options?.onAccept, onClose]);
+  }, [options, onClose]);
 
   /** Icon component rendered in Dialog window header */
-  const Icon = useMemo(() => VariantIcon(options?.variant), [options?.variant]);
+  const Icon = useMemo(() => VariantIcon(options?.variant), [options]);
 
   return (
     <Dialog

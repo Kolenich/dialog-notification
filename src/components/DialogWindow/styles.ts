@@ -5,10 +5,11 @@ import { createStyles, Theme } from '@material-ui/core/styles';
  * Main styles for Dialog window
  * @returns {StyleRules<{}, "success" | "warning" | "error" | "loading" | "info">}
  */
-export const mainStyles = () => createStyles({
+export const mainStyles = (theme: Theme) => createStyles({
   icon: {
     fontSize: 35,
     opacity: 0.9,
+    marginRight: theme.spacing(1),
   },
 });
 

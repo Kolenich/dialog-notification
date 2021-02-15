@@ -51,19 +51,14 @@ const DialogWindow: FC<DialogWindowProps & DialogProviderProps> = ({
     <Dialog
       scroll="paper"
       open={open}
-      fullWidth
       onClose={closeDialogWindow}
       disableBackdropClick={['loading', 'warning'].includes(options?.variant || 'info')}
       disableEscapeKeyDown={['loading', 'warning'].includes(options?.variant || 'info')}
     >
       <DialogTitle>
         <Grid container alignItems="center" spacing={2}>
-          <Grid item xs="auto">
-            <Icon className={clsx(classes.icon, classesIcon[getIconClass(options?.variant)])}/>
-          </Grid>
-          <Grid item xs="auto">
-            {options?.title || getDialogTitle(options?.variant)}
-          </Grid>
+          <Icon className={clsx(classes.icon, classesIcon[getIconClass(options?.variant)])}/>
+          {options?.title || getDialogTitle(options?.variant)}
         </Grid>
       </DialogTitle>
       <DialogContent>

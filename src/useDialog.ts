@@ -1,6 +1,6 @@
+import DialogContext from 'DialogContext';
+import { DialogContextValue } from 'DialogProvider/types';
 import { useContext } from 'react';
-import DialogContext from './DialogContext';
-import { DialogContextValue } from './DialogProvider/types';
 
 /**
  * Custom hook to access DialogContext value

@@ -10,7 +10,7 @@ import {
 import { Cancel, Done } from '@material-ui/icons';
 import clsx from 'clsx';
 import React, { FC, useContext } from 'react';
-import { DialogContext } from '../../DialogProvider';
+import DialogContext from '../../DialogContext';
 import { DialogProviderProps, DialogWindowProps } from '../../DialogProvider/types';
 import { getDialogTitle, getIconClass, VariantIcon } from '../../utils';
 import styles from './styles';

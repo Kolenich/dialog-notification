@@ -1,6 +1,6 @@
-import DialogWindow from 'components/DialogWindow';
-import DialogContext from 'DialogContext';
 import React, { FC, ReactNode, useMemo, useState } from 'react';
+import DialogWindow from '../components/DialogWindow';
+import DialogContext from '../DialogContext';
 import { DialogOptions, DialogProviderProps, DialogState } from './types';
 
 /** Provider component */

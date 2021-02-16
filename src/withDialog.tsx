@@ -1,5 +1,5 @@
-import DialogContext from 'DialogContext';
 import React, { ComponentType } from 'react';
+import DialogContext from './DialogContext';
 
 /**
  * A decorator to wrap components and provide them with value from DialogContext

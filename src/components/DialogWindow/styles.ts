@@ -1,11 +1,11 @@
 import { amber, blue, green, grey } from '@material-ui/core/colors';
-import { Theme } from '@material-ui/core/styles';
+import { createStyles, Theme } from '@material-ui/core/styles';
 
 /**
  * Main styles for Dialog window
  * @returns {StyleRules<{}, "icon">}
  */
-export default (theme: Theme) => ({
+export default (theme: Theme) => createStyles({
   icon: {
     fontSize: 35,
     opacity: 0.9,

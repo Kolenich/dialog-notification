@@ -12,9 +12,7 @@ export interface DialogState {
   options?: DialogOptions;
 }
 
-export interface DialogWindowProps extends DialogState {
-  onClose: () => void;
-}
+export type DialogWindowProps = DialogState
 
 export interface DialogOptions {
   variant: DialogVariant;

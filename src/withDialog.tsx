@@ -6,7 +6,7 @@ import { DialogContext } from './DialogProvider';
  * @param {React.ComponentType<T>} Component - component to be wrapped
  * @returns {(props: T) => JSX.Element}
  */
-export default <T, >(Component: ComponentType<T>) => (props: T) => (
+export default <T extends Record<string, never>>(Component: ComponentType<T>) => (props: T) => (
   <DialogContext.Consumer>
     {(context) => <Component {...context} {...props}/>}
   </DialogContext.Consumer>

@@ -29,6 +29,8 @@ const DialogProvider: FC<DialogProviderProps> = ({ children, ...providerOptions 
       options,
       open: true,
     }),
+    /** Function, that manually closes Dialog window */
+    closeDialog: () => setDialogState((oldState) => ({ ...oldState, open: false })),
   }), []);
 
   /**

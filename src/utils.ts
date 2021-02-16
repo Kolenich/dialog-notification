@@ -4,6 +4,12 @@ import { DialogVariant } from './DialogProvider/types';
 
 type LoadingIconComponent = (props: CircularProgressProps) => JSX.Element;
 
+/**
+ * Icon to be placed to the header of Dialog window
+ * @param {DialogVariant} variant - Dialog variant
+ * @return {SvgIconComponent | LoadingIconComponent}
+ * @constructor
+ */
 export const VariantIcon = (variant?: DialogVariant): SvgIconComponent | LoadingIconComponent => {
   switch (variant) {
   case 'error':
@@ -19,13 +25,18 @@ export const VariantIcon = (variant?: DialogVariant): SvgIconComponent | Loading
   }
 };
 
-export const getIconClass = (variant?: DialogVariant) => {
-  if (variant) {
-    return variant;
-  }
-  return 'info';
-};
+/**
+ * Key to CSS class based on variant option
+ * @param {DialogVariant} variant - Dialog variant
+ * @return {"error" | "success" | "loading" | "warning" | "info"}
+ */
+export const getIconClass = (variant?: DialogVariant) => variant || 'info';
 
+/**
+ * Dialog title based on variant option
+ * @param {DialogVariant} variant - Dialog variant
+ * @return {string}
+ */
 export const getDialogTitle = (variant?: DialogVariant) => {
   switch (variant) {
   case 'error':

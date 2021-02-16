@@ -3,7 +3,7 @@ import { createStyles, Theme } from '@material-ui/core/styles';
 
 /**
  * Main styles for Dialog window
- * @returns {StyleRules<{}, "success" | "warning" | "error" | "loading" | "info">}
+ * @returns {StyleRules<{}, "icon">}
  */
 export const mainStyles = (theme: Theme) => createStyles({
   icon: {

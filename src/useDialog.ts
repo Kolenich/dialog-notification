@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { DialogContext } from './DialogProvider';
+import DialogContext from './DialogContext';
 import { DialogContextValue } from './DialogProvider/types';
 
 /**

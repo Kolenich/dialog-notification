@@ -1,9 +1,7 @@
-import React, { createContext, FC, ReactNode, useMemo, useState } from 'react';
+import React, { FC, ReactNode, useMemo, useState } from 'react';
 import DialogWindow from '../components/DialogWindow';
-import { DialogContextValue, DialogOptions, DialogProviderProps, DialogState } from './types';
-
-/** Main context */
-export const DialogContext = createContext<DialogContextValue>({} as DialogContextValue);
+import DialogContext from '../DialogContext';
+import { DialogOptions, DialogProviderProps, DialogState } from './types';
 
 /** Provider component */
 const DialogProvider: FC<DialogProviderProps> = ({ children, ...providerOptions }) => {

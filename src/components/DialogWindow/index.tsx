@@ -5,99 +5,96 @@ import {
   DialogContent,
   DialogTitle,
   Grid,
+  WithStyles,
 } from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
+import { withStyles } from '@material-ui/core/styles';
 import { Cancel, Done } from '@material-ui/icons';
 import clsx from 'clsx';
-import React, { FC, useCallback, useMemo } from 'react';
+import React, { Component } from 'react';
 import { DialogProviderProps, DialogWindowProps } from '../../DialogProvider/types';
 import { getDialogTitle, getIconClass, VariantIcon } from '../../utils';
-import { iconStyles, mainStyles } from './styles';
+import styles from './styles';
 
-const useIconStyles = makeStyles(iconStyles);
-const useMainStyles = makeStyles(mainStyles);
+interface Props extends DialogWindowProps, DialogProviderProps, WithStyles<typeof styles> {
+}
 
-/**
- * Dialog window component
- * @param open {Boolean} - flag to open/close Dialog window
- * @param {React.ReactNode} message - main content of the Dialog window
- * @param {DialogOptions} options? - additional options to opening Dialog window
- * @param {() => void} onClose - function, that closes Dialog window
- * @param {DialogProviderProps} providerOptions - options from initializing DialogProvider
- * @return {JSX.Element}
- */
-const DialogWindow: FC<DialogWindowProps & DialogProviderProps> = ({
-  open, message, options, onClose, ...providerOptions
-}) => {
-  const classesIcon = useIconStyles();
-  const classes = useMainStyles();
-
+/** Dialog window component */
+class DialogWindow extends Component<Props> {
   /** Function for invoking options.onClose callback after closing Dialog window */
-  const closeDialogWindow = useCallback(() => {
+  closeDialogWindow = () => {
+    const { onClose, options } = this.props;
     onClose();
     options?.onClose?.();
-  }, [options, onClose]);
+  }
 
   /** Function for invoking options.onAccept callback after closing Dialog window */
-  const acceptWarning = useCallback(() => {
+  acceptWarning = () => {
+    const { onClose, options } = this.props;
     onClose();
     options?.onAccept?.();
-  }, [options, onClose]);
+  }
 
   /** Icon component rendered in Dialog window header */
-  const Icon = useMemo(() => VariantIcon(options?.variant), [options]);
+  get Icon() {
+    const { options } = this.props;
+    return VariantIcon(options?.variant);
+  }
 
-  return (
-    <Dialog
-      scroll="paper"
-      open={open}
-      onClose={closeDialogWindow}
-      disableBackdropClick={['loading', 'warning'].includes(options?.variant || 'info')}
-      disableEscapeKeyDown={['loading', 'warning'].includes(options?.variant || 'info')}
-    >
-      <DialogTitle>
-        <Grid container alignItems="center" spacing={2}>
-          <Icon className={clsx(classes.icon, classesIcon[getIconClass(options?.variant)])}/>
-          {options?.title || getDialogTitle(options?.variant)}
-        </Grid>
-      </DialogTitle>
-      <DialogContent>
-        {message}
-      </DialogContent>
-      <DialogActions>
-        {['error', 'success', 'info'].includes(options?.variant || 'info') && (
-          <Button
-            variant="contained"
-            color="primary"
-            onClick={closeDialogWindow}
-            endIcon={providerOptions.closeButtonIcon || <Done/>}
-          >
-            {providerOptions.closeButtonText || 'OK'}
-          </Button>
-        )}
-        {options?.variant === 'warning' && (
-          <>
+  render() {
+    const { options, open, message, classes, ...providerOptions } = this.props;
+
+    return (
+      <Dialog
+        scroll="paper"
+        open={open}
+        onClose={this.closeDialogWindow}
+        disableBackdropClick={['loading', 'warning'].includes(options?.variant || 'info')}
+        disableEscapeKeyDown={['loading', 'warning'].includes(options?.variant || 'info')}
+      >
+        <DialogTitle>
+          <Grid container alignItems="center" spacing={2}>
+            <this.Icon className={clsx(classes.icon, classes[getIconClass(options?.variant)])}/>
+            {options?.title || getDialogTitle(options?.variant)}
+          </Grid>
+        </DialogTitle>
+        <DialogContent>
+          {message}
+        </DialogContent>
+        <DialogActions>
+          {['error', 'success', 'info'].includes(options?.variant || 'info') && (
             <Button
               variant="contained"
               color="primary"
-              onClick={acceptWarning}
-              endIcon={providerOptions.acceptButtonIcon || <Done/>}
+              onClick={this.closeDialogWindow}
+              endIcon={providerOptions.closeButtonIcon || <Done/>}
             >
-              {providerOptions.acceptButtonText || 'Accept'}
+              {providerOptions.closeButtonText || 'OK'}
             </Button>
-            <Button
-              variant="contained"
-              color="secondary"
-              onClick={closeDialogWindow}
-              endIcon={providerOptions.declineButtonIcon || <Cancel/>}
-            >
-              {providerOptions.declineButtonText || 'Cancel'}
-            </Button>
-          </>
-        )}
-      </DialogActions>
-    </Dialog>
-  );
-};
+          )}
+          {options?.variant === 'warning' && (
+            <>
+              <Button
+                variant="contained"
+                color="primary"
+                onClick={this.acceptWarning}
+                endIcon={providerOptions.acceptButtonIcon || <Done/>}
+              >
+                {providerOptions.acceptButtonText || 'Accept'}
+              </Button>
+              <Button
+                variant="contained"
+                color="secondary"
+                onClick={this.closeDialogWindow}
+                endIcon={providerOptions.declineButtonIcon || <Cancel/>}
+              >
+                {providerOptions.declineButtonText || 'Cancel'}
+              </Button>
+            </>
+          )}
+        </DialogActions>
+      </Dialog>
+    );
+  }
+}
 
-export default DialogWindow;
+export default withStyles(styles)(DialogWindow);

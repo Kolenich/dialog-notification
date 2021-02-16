@@ -1,24 +1,16 @@
 import { amber, blue, green, grey } from '@material-ui/core/colors';
-import { createStyles, Theme } from '@material-ui/core/styles';
+import { Theme } from '@material-ui/core/styles';
 
 /**
  * Main styles for Dialog window
  * @returns {StyleRules<{}, "icon">}
  */
-export const mainStyles = (theme: Theme) => createStyles({
+export default (theme: Theme) => ({
   icon: {
     fontSize: 35,
     opacity: 0.9,
     marginRight: theme.spacing(1),
   },
-});
-
-/**
- * Styles for icons in Dialog window
- * @param {Theme} theme - MUI theme object
- * @returns {StyleRules<{}, "success" | "warning" | "error" | "loading" | "info">}
- */
-export const iconStyles = (theme: Theme) => createStyles({
   error: {
     color: theme.palette.error.dark,
   },

@@ -1,4 +1,3 @@
-import { SvgIconComponent } from '@material-ui/icons';
 import { ReactNode } from 'react';
 
 export interface DialogContextValue {
@@ -12,7 +11,7 @@ export interface DialogState {
   options?: DialogOptions;
 }
 
-export type DialogWindowProps = DialogState
+export type DialogWindowProps = DialogState;
 
 export interface DialogOptions {
   variant: DialogVariant;
@@ -23,11 +22,11 @@ export interface DialogOptions {
 
 export interface DialogProviderProps {
   closeButtonText?: string;
-  closeButtonIcon?: SvgIconComponent;
+  closeButtonIcon?: ReactNode;
   acceptButtonText?: string;
-  acceptButtonIcon?: SvgIconComponent;
+  acceptButtonIcon?: ReactNode;
   declineButtonText?: string;
-  declineButtonIcon?: SvgIconComponent;
+  declineButtonIcon?: ReactNode;
 }
 
 export type DialogVariant = 'error' | 'success' | 'loading' | 'warning' | 'info';

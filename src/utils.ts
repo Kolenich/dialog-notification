@@ -30,7 +30,7 @@ export const VariantIcon = (variant?: DialogVariant): SvgIconComponent | Loading
  * @param {DialogVariant} variant - Dialog variant
  * @return {"error" | "success" | "loading" | "warning" | "info"}
  */
-export const getIconClass = (variant?: DialogVariant) => variant || 'info';
+export const getIconClass = (variant: DialogVariant = 'info') => variant;
 
 /**
  * Dialog title based on variant option

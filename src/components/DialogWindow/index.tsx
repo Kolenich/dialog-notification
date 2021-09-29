@@ -11,7 +11,7 @@ import { Cancel, Done } from '@material-ui/icons';
 import clsx from 'clsx';
 import React, { FC, useContext } from 'react';
 import DialogContext from '../../DialogContext';
-import { DialogProviderProps, DialogWindowProps } from '../../DialogProvider/types';
+import { DialogProviderProps, DialogVariant, DialogWindowProps } from '../../DialogProvider/types';
 import { getDialogTitle, getIconClass, VariantIcon } from '../../utils';
 import styles from './styles';
 
@@ -32,12 +32,9 @@ const DialogWindow: FC<Props> = ({ options, open, message, ...providerOptions })
     <Dialog
       scroll="paper"
       open={open}
-      onClose={() => {
-        closeDialog();
-        options?.onClose?.();
-      }}
-      disableBackdropClick={['loading', 'warning'].includes(options?.variant || 'info')}
-      disableEscapeKeyDown={['loading', 'warning'].includes(options?.variant || 'info')}
+      onClose={closeDialog}
+      disableBackdropClick={['loading', 'warning'].includes(options?.variant as DialogVariant)}
+      disableEscapeKeyDown={['loading', 'warning'].includes(options?.variant as DialogVariant)}
     >
       <DialogTitle>
         <Grid container alignItems="center" spacing={2}>
@@ -49,7 +46,7 @@ const DialogWindow: FC<Props> = ({ options, open, message, ...providerOptions })
         {message}
       </DialogContent>
       <DialogActions>
-        {['error', 'success', 'info'].includes(options?.variant || 'info') && (
+        {['error', 'success', 'info'].includes(options?.variant as DialogVariant) && (
           <Button
             variant="contained"
             color="primary"
@@ -57,9 +54,9 @@ const DialogWindow: FC<Props> = ({ options, open, message, ...providerOptions })
               closeDialog();
               options?.onClose?.();
             }}
-            endIcon={providerOptions.closeButtonIcon || <Done/>}
+            endIcon={providerOptions.closeButtonIcon}
           >
-            {providerOptions.closeButtonText || 'OK'}
+            {providerOptions.closeButtonText}
           </Button>
         )}
         {options?.variant === 'warning' && (
@@ -71,9 +68,9 @@ const DialogWindow: FC<Props> = ({ options, open, message, ...providerOptions })
                 closeDialog();
                 options?.onAccept?.();
               }}
-              endIcon={providerOptions.acceptButtonIcon || <Done/>}
+              endIcon={providerOptions.acceptButtonIcon}
             >
-              {providerOptions.acceptButtonText || 'Accept'}
+              {providerOptions.acceptButtonText}
             </Button>
             <Button
               variant="contained"
@@ -82,15 +79,27 @@ const DialogWindow: FC<Props> = ({ options, open, message, ...providerOptions })
                 closeDialog();
                 options?.onClose?.();
               }}
-              endIcon={providerOptions.declineButtonIcon || <Cancel/>}
+              endIcon={providerOptions.declineButtonIcon}
             >
-              {providerOptions.declineButtonText || 'Cancel'}
+              {providerOptions.declineButtonText}
             </Button>
           </>
         )}
       </DialogActions>
     </Dialog>
   );
+};
+
+DialogWindow.defaultProps = {
+  options: {
+    variant: 'info',
+  },
+  closeButtonIcon: <Done/>,
+  closeButtonText: 'OK',
+  acceptButtonIcon: <Done/>,
+  acceptButtonText: 'Accept',
+  declineButtonIcon: <Cancel/>,
+  declineButtonText: 'Cancel',
 };
 
 export default DialogWindow;

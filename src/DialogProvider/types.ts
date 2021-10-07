@@ -2,7 +2,7 @@ import { ReactNode } from 'react';
 
 export interface DialogContextValue {
   openDialog: (message: string, options?: DialogOptions) => void;
-  closeDialog: () => void;
+  closeDialog: (event?: Record<string, never>, reason?: string) => void;
 }
 
 export interface DialogState {

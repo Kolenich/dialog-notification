@@ -24,7 +24,11 @@ const DialogProvider: FC<DialogProviderProps> = ({ children, ...providerOptions 
       open: true,
     }),
     /** Function for closing Dialog window manually */
-    closeDialog: () => setDialogState((oldState) => ({ ...oldState, open: false })),
+    closeDialog: (event?: Record<string, never>, reason?: string) => {
+      if (!['backdropClick', 'escapeKeyDown'].includes(reason as string)) {
+        setDialogState((oldState) => ({ ...oldState, open: false }));
+      }
+    },
   }), []);
 
   return (

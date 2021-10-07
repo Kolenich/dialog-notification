@@ -1,6 +1,6 @@
 {
   "name": "dialog-notification",
-  "version": "1.2.4",
+  "version": "1.2.5",
   "description": "Library for using MUI Dialog component for making notifications.",
   "main": "build/index.js",
   "types": "build/index.d.ts",

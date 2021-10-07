@@ -33,8 +33,6 @@ const DialogWindow: FC<Props> = ({ options, open, message, ...providerOptions })
       scroll="paper"
       open={open}
       onClose={closeDialog}
-      disableBackdropClick={['loading', 'warning'].includes(options?.variant as DialogVariant)}
-      disableEscapeKeyDown={['loading', 'warning'].includes(options?.variant as DialogVariant)}
     >
       <DialogTitle>
         <Grid container alignItems="center" spacing={2}>

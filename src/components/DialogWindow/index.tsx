@@ -1,28 +1,15 @@
-import {
-  Button,
-  Dialog,
-  DialogActions,
-  DialogContent,
-  DialogTitle,
-  Grid,
-  makeStyles,
-} from '@material-ui/core';
-import { Cancel, Done } from '@material-ui/icons';
-import clsx from 'clsx';
+import { Cancel, Done } from '@mui/icons-material';
+import { Button, Dialog, DialogActions, DialogContent, DialogTitle, Grid } from '@mui/material';
 import React, { FC, useContext } from 'react';
 import DialogContext from '../../DialogContext';
 import { DialogProviderProps, DialogVariant, DialogWindowProps } from '../../DialogProvider/types';
 import { getDialogTitle, getIconClass, VariantIcon } from '../../utils';
-import styles from './styles';
+import sx from './sx';
 
-const useStyles = makeStyles(styles);
-
-interface Props extends DialogWindowProps, DialogProviderProps {
-}
+type Props = DialogWindowProps & DialogProviderProps;
 
 /** Dialog window component */
 const DialogWindow: FC<Props> = ({ options, open, message, ...providerOptions }) => {
-  const classes = useStyles();
   const { closeDialog } = useContext(DialogContext);
 
   /** Icon component rendered in Dialog window header */
@@ -36,7 +23,7 @@ const DialogWindow: FC<Props> = ({ options, open, message, ...providerOptions })
     >
       <DialogTitle>
         <Grid container alignItems="center" spacing={2}>
-          <Icon className={clsx(classes.icon, classes[getIconClass(options?.variant)])}/>
+          <Icon sx={{ ...sx.icon, ...sx[getIconClass(options?.variant)] }}/>
           {options?.title || getDialogTitle(options?.variant)}
         </Grid>
       </DialogTitle>

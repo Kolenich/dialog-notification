@@ -1,5 +1,5 @@
-import { CircularProgress, CircularProgressProps } from '@material-ui/core';
-import { CheckCircle, Error, Info, SvgIconComponent, Warning } from '@material-ui/icons';
+import { CheckCircle, Error, Info, SvgIconComponent, Warning } from '@mui/icons-material';
+import { CircularProgress, CircularProgressProps } from '@mui/material';
 import { DialogVariant } from './DialogProvider/types';
 
 type LoadingIconComponent = (props: CircularProgressProps) => JSX.Element;
